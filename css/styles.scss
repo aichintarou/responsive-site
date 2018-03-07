@@ -1,0 +1,172 @@
+@import "compass";
+@import url(https://fonts.googleapis.com/css?family=Abel);
+// font-family
+$baseFontFamily :"游ゴシック", YuGothic, "メイリオ",Verdana, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+
+// colors
+$baseColor: #FFF2E6;
+$subColor: #FFD0A7;
+$keyColor: #51A2B2;
+$fontColor: #4c4c4c;
+
+
+/* Base
+------------------------------------------------------------*/
+html{ font-size: 62.5%; }
+
+body{
+  color: $fontColor;
+  font-size: 1.4rem;
+  font-family:$baseFontFamily;
+  line-height:1.6;
+  letter-spacing: 0.1em; 
+  background-color: $baseColor;
+}
+
+a {
+  @include link-colors($keyColor, darken($keyColor, 10%), lighten($keyColor, 5%), darken($keyColor, 10%));
+  text-decoration: none;
+}
+
+/* Align
+------------------------------------------------------------*/
+.text-center {
+  text-align: center;
+}
+
+/* Layout
+------------------------------------------------------------*/
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Font
+------------------------------------------------------------*/
+.abel {
+  font-family: 'Abel', sans-serif;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+
+
+// ==top image==
+.img-top {
+  background-image: url("../images/img_top.jpg");
+  height: 250px;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+
+// ==common styles==
+section {
+  padding: 60px 0;
+  .container {
+    width: 90%;
+    @extend .block-center;
+  }
+  h1 {
+    @extend .abel;
+    font-size: 3.2rem;
+    @extend .uppercase;
+  }
+}
+
+// ==skills==
+#skills{
+    background-color: $subColor;
+    
+    .container{
+        @include display-flex;
+        justify-content: space-between;
+        @include flex-direction(column); 
+        
+        
+        .skill-box{
+            @include flex(1);
+            margin: 10px 0px;
+
+            background-color: $baseColor;
+            margin-bottom: 60px;
+            border: 2px solid $keyColor;
+            @include border-radius(6px);
+            
+            h2{
+
+                @extend .abel;
+                @extend .uppercase;
+                color: $baseColor;
+                background-color: $keyColor;
+                margin-bottom: 10px;
+                font-size: 2.4rem;
+                font-weight: bold;
+                padding: 20px;
+            }
+            p{
+                padding: 20px;
+            }
+        }
+    }
+    
+    h1{
+        color: $baseColor;
+        margin-bottom: 60px;
+    }
+}
+
+// ==contact(footer)==
+footer{
+    #contact{
+        .button {
+            border: 2px solid $keyColor;
+            width: 40px;
+            height: 20px;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            @include border-radius(6px);
+            padding: 10px;
+            font-size: 20px;
+            line-height: 0;
+            font-style: bold;
+        }
+        
+        h1{
+            margin-bottom: 20px;
+        }
+    }
+}
+// =====desktop======
+
+@media(min-width: 769px){
+    
+    .img-top {
+      background-image: url("../images/img_top.jpg");
+      height: 500px;
+      width: 100%;
+      background-size: cover;
+      background-position: center center;
+    }
+    
+    #skills{
+        .container{
+            @include flex-direction(row);
+            justify-content: space-between;
+            
+            .skill-box{
+                margin: 0 10px;
+            }
+        }
+    }
+    
+    .button{
+        &:hover, &:active{
+            background-color: $keyColor;
+            color: $baseColor;
+        }
+    }
+}
